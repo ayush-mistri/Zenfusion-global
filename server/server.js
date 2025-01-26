@@ -9,7 +9,9 @@ const PORT = 5000;
 
 // Middleware
 app.use(cors({
-  origin: "http://localhost:5173", // React app origin
+  origin: process.env.NODE_ENV === "production"
+    ? "https://zenfusion-global.com" // Replace with your frontend's deployed URL
+    : "http://localhost:5173", // React app origin
   methods: ["GET", "POST"],
   allowedHeaders: ["Content-Type"],
 }));
@@ -60,8 +62,5 @@ app.post("/send-email", async (req, res) => {
     console.error("Error sending email:", error);
     res.status(500).json({ message: "Failed to send email" });
   }
-});
-
-app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
+  
 });

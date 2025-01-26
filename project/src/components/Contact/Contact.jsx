@@ -22,8 +22,12 @@ const Contact = () => {
     e.preventDefault();
     setStatus("Sending...");
 
+    const baseURL = process.env.NODE_ENV === "production"
+    ? "https://zenfusion-global.vercel.app/api/send-email" // Replace with your Vercel URL
+    : "http://localhost:5000/send-email";
+
     try {
-      const response = await fetch("http://localhost:5000/send-email", {
+      const response = await fetch(baseURL, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
