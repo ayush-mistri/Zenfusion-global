@@ -33,6 +33,9 @@ app.post("/api/send-email", async (req, res) => {
       },
     });
 
+    console.log(email);
+    
+
     const mailOptions = {
       from: `${fullName} <${email}>`,
       to: "ayushmistri0203@gmail.com",
