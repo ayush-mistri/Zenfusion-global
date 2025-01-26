@@ -9,7 +9,7 @@ dotenv.config();
 const app = express();
 
 app.use(cors({
-  origin: "*",
+  origin: "https://zenfusion-global-123.vercel.app",
   methods: ["GET", "POST"],
 }));
 
@@ -33,7 +33,7 @@ app.post("/api/send-email", async (req, res) => {
 
     const mailOptions = {
       from: `${fullName} <${email}>`,
-      to: "22cs007@charusat.edu.in",
+      to: "ayushmistri0203@gmail.com",
       subject: `New Contact Form Submission from ${fullName}`,
       text: `
         Full Name: ${fullName}
