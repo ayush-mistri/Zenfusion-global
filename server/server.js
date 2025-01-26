@@ -10,7 +10,7 @@ const PORT = 5000;
 // Middleware
 app.use(cors({
   origin: process.env.NODE_ENV === "production"
-    ? "https://zenfusion-global.com" // Replace with your frontend's deployed URL
+    ? "https://zenfusion-global-123.com" // Replace with your frontend's deployed URL
     : "http://localhost:5173", // React app origin
   methods: ["GET", "POST"],
   allowedHeaders: ["Content-Type"],
