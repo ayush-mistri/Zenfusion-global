@@ -24,7 +24,9 @@ const Contact = () => {
 
     const baseURL = process.env.NODE_ENV === "production"
     ? "https://zenfusion-global.vercel.app/api/send-email" // Replace with your Vercel URL
-    : "http://localhost:5000/send-email";
+    : "http://localhost:5000/api/send-email";
+
+    console.log(baseURL);
 
     try {
       const response = await fetch(baseURL, {

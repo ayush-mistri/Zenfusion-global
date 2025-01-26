@@ -1,15 +1,17 @@
-import express from "express";
-import nodemailer from "nodemailer";
-import cors from "cors";
-import bodyParser from "body-parser";
-import dotenv from "dotenv";
+import express from 'express';
+import nodemailer from 'nodemailer';
+import cors from 'cors';
+import bodyParser from 'body-parser';
+import dotenv from 'dotenv';
 
 dotenv.config();
 
 const app = express();
 
 app.use(cors({
-  origin: "https://zenfusion-global-123.vercel.app",
+  origin: process.env.NODE_ENV === "production"
+    ? "https://zenfusion-global-123.vercel.app" 
+    : "http://localhost:5173",
   methods: ["GET", "POST"],
 }));
 
@@ -52,5 +54,7 @@ app.post("/api/send-email", async (req, res) => {
   }
 });
 
-// Vercel expects the handler to be exported as default
-export default app;
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
