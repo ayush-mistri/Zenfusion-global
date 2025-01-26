@@ -1,13 +1,20 @@
-const express = require("express");
-const nodemailer = require("nodemailer");
-const cors = require("cors");
-const bodyParser = require("body-parser");
+import express from "express";
+import nodemailer from "nodemailer";
+import cors from "cors";
+import bodyParser from "body-parser";
+import dotenv from "dotenv";
 
 const app = express();
 const PORT = 5000;
 
 // Middleware
-app.use(cors());
+app.use(cors({
+  origin: "http://localhost:5173", // React app origin
+  methods: ["GET", "POST"],
+  allowedHeaders: ["Content-Type"],
+}));
+
+dotenv.config();
 app.use(bodyParser.json());
 
 // POST route to handle email sending
@@ -24,15 +31,16 @@ app.post("/send-email", async (req, res) => {
     const transporter = nodemailer.createTransport({
       service: "gmail",
       auth: {
-        user: "ayushmistri0203@gmail.com", // Replace with your email
-        pass: "rzrhpqjrpvgqdijb",   // Replace with your app password
+        user: process.env.EMAIL, // Environment variable for email
+        pass: process.env.EMAIL_PASSWORD, // Environment variable for app password
       },
     });
+    
 
     // Email content
     const mailOptions = {
       from: `${fullName} <${email}>`, // Display user's email as sender
-      to: "shubhlodaliya@gmail.com", // Replace with the intended recipient
+      to: "22cs007@charusat.edu.in", // Replace with the intended recipient
       subject: `New Contact Form Submission from ${fullName}`,
       text: `
         You have received a new message from the contact form:
