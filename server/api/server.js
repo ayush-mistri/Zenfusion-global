@@ -59,5 +59,8 @@ app.post("/api/send-email", async (req, res) => {
   }
 });
 
-// ✅ Instead of app.listen(), export the Express app
-export default app;
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => {
+  console.log(`✅ Server is running on port ${PORT}`);
+});
+

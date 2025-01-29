@@ -31,7 +31,7 @@ const Contact = () => {
     try {
       const response = await fetch(baseURL, {
         method: "POST",
-        headers: {
+        headers: {  
           "Content-Type": "application/json",
         },
         body: JSON.stringify(formData),
