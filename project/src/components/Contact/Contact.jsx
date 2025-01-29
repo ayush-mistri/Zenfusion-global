@@ -23,8 +23,8 @@ const Contact = () => {
     setStatus("Sending...");
 
     const baseURL = process.env.NODE_ENV === "production"
-    ? "https://zenfusion-global.vercel.app/api/send-email" // Replace with your Vercel URL
-    : "http://localhost:5000/api/send-email";
+  ? "https://zenfusion-global-123.vercel.app/api/send-email" // ✅ Corrected URL
+  : "http://localhost:5000/api/send-email";
 
     console.log(baseURL);
 
